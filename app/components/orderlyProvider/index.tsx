@@ -6,6 +6,7 @@ import { LocaleProvider, LocaleCode, LocaleEnum, defaultLanguages } from "@order
 import { withBasePath } from "@/utils/base-path";
 import { getSEOConfig, getUserLanguage } from "@/utils/seo";
 import { getRuntimeConfigBoolean, getRuntimeConfigArray, getRuntimeConfig } from "@/utils/runtime-config";
+import { DemoGraduationChecker } from "@/components/DemoGraduationChecker";
 
 const NETWORK_ID_KEY = "orderly_network_id";
 
@@ -200,6 +201,7 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 			{...(chainFilter && { chainFilter } as any)}
 			defaultChain={defaultChain}
 		>
+			<DemoGraduationChecker />
 			{props.children}
 		</OrderlyAppProvider>
 	);
