@@ -3,5 +3,6 @@
   "extend.affiliate.tag": "40% Rebate",
   "extend.affiliate.description": "Ganhe mais como afiliado da Orderly",
   "extend.staking": "Staking",
-  "extend.staking.description": "Apostar ORDER/esORDER para adquirir VALOR"
+  "extend.staking.description": "Apostar ORDER/esORDER para adquirir VALOR",
+  "extend.swap": "Trocar"
 }

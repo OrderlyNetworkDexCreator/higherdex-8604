@@ -1,19 +1,21 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router-dom";
 import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 
-export default function PerpPage() {
+export default function VaultsLayout() {
   const config = useOrderlyConfig();
   const { onRouteChange } = useNav();
 
   return (
     <Scaffold
-      mainNavProps={config.scaffold.mainNavProps}
+      mainNavProps={{
+        ...config.scaffold.mainNavProps,
+        initialMenu: "/vaults",
+      }}
       footerProps={config.scaffold.footerProps}
       routerAdapter={{
         onRouteChange,
-        currentPath: "/",
       }}
       bottomNavProps={config.scaffold.bottomNavProps}
     >
@@ -21,3 +23,4 @@ export default function PerpPage() {
     </Scaffold>
   );
 }
+

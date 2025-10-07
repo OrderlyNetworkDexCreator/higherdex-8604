@@ -20,7 +20,13 @@ export function getRuntimeConfig(key: string): string | undefined {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (import.meta.env as any)[key];
+  const envValue = (import.meta.env as any)[key];
+
+  if (key === "VITE_ORDERLY_BROKER_ID" && (!envValue || envValue === "")) {
+    return "demo";
+  }
+
+  return envValue;
 }
 
 /**

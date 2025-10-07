@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, lazy, Suspense, useState, useEffect } from "react";
+import { ReactNode, useCallback, lazy, Suspense } from "react";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
 import { useOrderlyConfig } from "@/utils/config";
 import type { NetworkId } from "@orderly.network/types";
@@ -7,6 +7,7 @@ import { withBasePath } from "@/utils/base-path";
 import { getSEOConfig, getUserLanguage } from "@/utils/seo";
 import { getRuntimeConfigBoolean, getRuntimeConfigArray, getRuntimeConfig } from "@/utils/runtime-config";
 import { DemoGraduationChecker } from "@/components/DemoGraduationChecker";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 
 const NETWORK_ID_KEY = "orderly_network_id";
 
@@ -63,47 +64,12 @@ const getDefaultLanguage = (): LocaleCode => {
 	return (availableLanguages[0] || 'en') as LocaleCode;
 };
 
-const LoadingSpinner = () => (
-	<div className="loading-container">
-		<div className="loading-spinner"></div>
-		<style>
-			{`
-				.loading-container {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					width: 100%;
-					height: 100vh;
-					background-color: rgba(0, 0, 0, 0.03);
-				}
-				.loading-spinner {
-					width: 50px;
-					height: 50px;
-					border: 4px solid rgba(0, 0, 0, 0.1);
-					border-radius: 50%;
-					border-left-color: #09f;
-					animation: spin 1s linear infinite;
-				}
-				@keyframes spin {
-					0% {
-						transform: rotate(0deg);
-					}
-					100% {
-						transform: rotate(360deg);
-					}
-				}
-			`}
-		</style>
-	</div>
-);
-
 const PrivyConnector = lazy(() => import("@/components/orderlyProvider/privyConnector"));
 const WalletConnector = lazy(() => import("@/components/orderlyProvider/walletConnector"));
 
 const OrderlyProvider = (props: { children: ReactNode }) => {
 	const config = useOrderlyConfig();
 	const networkId = getNetworkId();
-	const [isClient, setIsClient] = useState(false);
 	
 	const privyAppId = getRuntimeConfig('VITE_PRIVY_APP_ID');
 	const usePrivy = !!privyAppId;
@@ -135,10 +101,6 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 	} : undefined;
 
 	const defaultChain = parseDefaultChain(getRuntimeConfig('VITE_DEFAULT_CHAIN'));
-
-	useEffect(() => {
-		setIsClient(true);
-	}, []);
 
 	const onChainChanged = useCallback(
 		(_chainId: number, {isTestnet}: {isTestnet: boolean}) => {
@@ -205,10 +167,6 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 			{props.children}
 		</OrderlyAppProvider>
 	);
-
-	if (!isClient) {
-		return <LoadingSpinner />;
-	}
 
 	const walletConnector = usePrivy
 		? <PrivyConnector networkId={networkId}>{appProvider}</PrivyConnector>

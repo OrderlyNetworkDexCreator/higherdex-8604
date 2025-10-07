@@ -1,24 +1,25 @@
-import { MetaFunction } from "@remix-run/node";
+import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "@remix-run/react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { generatePageTitle } from "@/utils/utils";
 
-export const meta: MetaFunction = () => {
-  return [{ title: generatePageTitle("Rewards") }];
-};
-
-export default function RewardsIndexPage() {
+export default function RewardsIndex() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const searchString = searchParams.toString();
     const redirectPath = searchString 
-      ? `/rewards/trading?${searchString}` 
-      : "/rewards/trading";
+      ? `/rewards/affiliate?${searchString}` 
+      : "/rewards/affiliate";
     
     navigate(redirectPath, { replace: true });
   }, [navigate, searchParams]);
 
-  return null;
+  return (
+    <Helmet>
+      <title>{generatePageTitle("Rewards")}</title>
+    </Helmet>
+  );
 }
+

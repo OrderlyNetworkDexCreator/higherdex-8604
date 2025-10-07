@@ -1,21 +1,19 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router-dom";
 import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 
-export default function LeaderboardPage() {
+export default function PerpLayout() {
   const config = useOrderlyConfig();
   const { onRouteChange } = useNav();
 
   return (
     <Scaffold
-      mainNavProps={{
-        ...config.scaffold.mainNavProps,
-        initialMenu: "/leaderboard",
-      }}
+      mainNavProps={config.scaffold.mainNavProps}
       footerProps={config.scaffold.footerProps}
       routerAdapter={{
         onRouteChange,
+        currentPath: "/",
       }}
       bottomNavProps={config.scaffold.bottomNavProps}
     >
@@ -23,3 +21,4 @@ export default function LeaderboardPage() {
     </Scaffold>
   );
 }
+

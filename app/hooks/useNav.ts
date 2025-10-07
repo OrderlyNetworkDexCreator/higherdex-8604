@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useNavigate, useSearchParams } from "@remix-run/react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { RouteOption } from "@orderly.network/ui-scaffold";
 import { getSymbol } from "@/utils/storage";
 

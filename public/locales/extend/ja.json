@@ -3,5 +3,6 @@
   "extend.affiliate.tag": "40%リベート",
   "extend.affiliate.description": "Orderlyアフィリエイトでより多くを獲得",
   "extend.staking": "ステーキング",
-  "extend.staking.description": "ORDER/esORDERをステーキングしてVALORを獲得"
+  "extend.staking.description": "ORDER/esORDERをステーキングしてVALORを獲得",
+  "extend.swap": "スワップ"
 }

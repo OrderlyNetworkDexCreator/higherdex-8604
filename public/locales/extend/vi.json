@@ -3,5 +3,6 @@
   "extend.affiliate.tag": "Hoàn trả 40%",
   "extend.affiliate.description": "Kiếm thêm với tư cách là đối tác của Orderly",
   "extend.staking": "Staking",
-  "extend.staking.description": "Staking ORDER/esORDER để nhận VALOR"
+  "extend.staking.description": "Staking ORDER/esORDER để nhận VALOR",
+  "extend.swap": "Hoán đổi"
 }

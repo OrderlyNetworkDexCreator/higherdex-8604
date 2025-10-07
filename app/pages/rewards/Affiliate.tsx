@@ -1,13 +1,13 @@
-import { MetaFunction } from "@remix-run/node";
+import { Helmet } from "react-helmet-async";
 import { generatePageTitle } from "@/utils/utils";
 import { Dashboard, ReferralProvider } from "@orderly.network/affiliate";
 
-export const meta: MetaFunction = () => {
-  return [{ title: generatePageTitle("Affiliate") }];
-};
-
-export default function AffiliatePage() {
+export default function RewardsAffiliate() {
   return (
+    <>
+      <Helmet>
+        <title>{generatePageTitle("Affiliate")}</title>
+      </Helmet>
       <ReferralProvider
         becomeAnAffiliateUrl="https://orderly.network"
         learnAffiliateUrl="https://orderly.network"
@@ -15,5 +15,7 @@ export default function AffiliatePage() {
       >
         <Dashboard.AffiliatePage />
       </ReferralProvider>
+    </>
   );
 }
+

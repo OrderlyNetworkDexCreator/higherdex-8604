@@ -7,7 +7,7 @@ import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { withBasePath } from "./base-path";
 import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, MarketsActiveIcon, MarketsInactiveIcon, useScreen, Flex, cn } from "@orderly.network/ui";
 import { getRuntimeConfig, getRuntimeConfigBoolean, getRuntimeConfigNumber } from "./runtime-config";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router-dom";
 import CustomLeftNav from "@/components/CustomLeftNav";
 
 interface MainNavItem {
@@ -43,6 +43,7 @@ const ALL_MENU_ITEMS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
+  { name: "Swap", href: "/swap", translationKey: "extend.swap" },
   { name: "Rewards", href: "/rewards", translationKey: "tradingRewards.rewards" },
   { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
   { name: "Vaults", href: "/vaults", translationKey: "common.vaults" },
@@ -52,6 +53,7 @@ const DEFAULT_ENABLED_MENUS = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
+  { name: "Swap", href: "/swap", translationKey: "extend.swap" },
   { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
 ];
 

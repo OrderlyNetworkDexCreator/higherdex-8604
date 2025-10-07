@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "@remix-run/react";
+import { Outlet, useLocation } from "react-router-dom";
 import { PortfolioLayoutWidget } from "@orderly.network/portfolio";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
@@ -29,3 +29,4 @@ export default function PortfolioLayout() {
     </PortfolioLayoutWidget>
   );
 }
+

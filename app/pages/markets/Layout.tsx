@@ -1,9 +1,9 @@
-import { Outlet } from "@remix-run/react";
-import { Scaffold } from "@orderly.network/ui-scaffold";
+import { Outlet } from "react-router-dom";
 import { useOrderlyConfig } from "@/utils/config";
+import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useNav } from "@/hooks/useNav";
 
-export default function LeaderboardPage() {
+export default function MarketsLayout() {
   const config = useOrderlyConfig();
   const { onRouteChange } = useNav();
 
@@ -11,7 +11,7 @@ export default function LeaderboardPage() {
     <Scaffold
       mainNavProps={{
         ...config.scaffold.mainNavProps,
-        initialMenu: "/vaults",
+        initialMenu: "/markets",
       }}
       footerProps={config.scaffold.footerProps}
       routerAdapter={{
@@ -23,3 +23,4 @@ export default function LeaderboardPage() {
     </Scaffold>
   );
 }
+
