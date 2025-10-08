@@ -8,9 +8,10 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "NODE_OPTIONS='--max-old-space-size=8192' vite build",
-    "build:spa": "NODE_OPTIONS='--max-old-space-size=8192' tsx build.ts",
-    "dev": "vite",
+    "build": "tsx scripts/generate-manifest.ts && NODE_OPTIONS='--max-old-space-size=8192' vite build && tsx scripts/generate-manifest.ts",
+    "build:spa": "tsx scripts/generate-manifest.ts && NODE_OPTIONS='--max-old-space-size=8192' tsx build.ts && tsx scripts/generate-manifest.ts",
+    "dev": "tsx scripts/generate-manifest.ts && vite",
+    "generate:manifest": "tsx scripts/generate-manifest.ts",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "typecheck": "tsc"
